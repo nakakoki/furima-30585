@@ -10,15 +10,18 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :condition_id, presence: true
-  validates :shipping_charge_id, presence: true
-  validates :days_to_ship_id, presence: true
-  validates :prefectures_id, presence: true
-  validates :category_id, presence: true
-  validates :price, presence: true
   validates :image, presence: true
 
-  validates :category_id, :condition_id, :shipping_charge_id, :prefectures_id, :days_to_ship_id, numericality: { other_than: 1 }
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  validates :price, format: { with: /\A[0-9]+\z/ }
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :condition_id
+    validates :shipping_charge_id
+    validates :prefectures_id
+    validates :days_to_ship_id
+  end
+
+  with_options presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ } do
+    validates :price
+  end
+
 end
