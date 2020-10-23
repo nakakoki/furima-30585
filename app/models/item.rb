@@ -20,8 +20,7 @@ class Item < ApplicationRecord
     validates :days_to_ship_id
   end
 
-  with_options presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ } do
+  with_options presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ } do
     validates :price
   end
-
 end
