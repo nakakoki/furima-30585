@@ -18,7 +18,7 @@ RSpec.describe Order, type: :model do
     it '郵便番号にはハイフンがないと購入できない' do
       @order.postal_code = '1234567'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Postal code is invalid")
+      expect(@order.errors.full_messages).to include('Postal code is invalid')
     end
 
     it '都道府県が空だと購入できない' do
@@ -30,7 +30,7 @@ RSpec.describe Order, type: :model do
     it '都道府県のidが1の場合購入できない' do
       @order.prefecture_id = '---'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Prefecture is not a number")
+      expect(@order.errors.full_messages).to include('Prefecture is not a number')
     end
 
     it '市区町村が空だと購入できない' do
@@ -59,7 +59,7 @@ RSpec.describe Order, type: :model do
     it '電話場合はハイフンを含むと購入できない' do
       @order.phone_number = '090-1234-5678'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Phone number is invalid")
+      expect(@order.errors.full_messages).to include('Phone number is invalid')
     end
 
     it 'tokenが空では購入できない' do
