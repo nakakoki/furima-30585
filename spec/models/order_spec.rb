@@ -28,9 +28,9 @@ RSpec.describe Order, type: :model do
     end
 
     it '都道府県のidが1の場合購入できない' do
-      @order.prefecture_id = '---'
+      @order.prefecture_id = 1
       @order.valid?
-      expect(@order.errors.full_messages).to include('Prefecture is not a number')
+      expect(@order.errors.full_messages).to include('Prefecture must be other than 1')
     end
 
     it '市区町村が空だと購入できない' do
